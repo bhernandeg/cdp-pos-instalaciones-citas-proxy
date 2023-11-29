@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <DefaultFaultRule>
+        <Step>
+            <Condition>request.header.origin != null</Condition>
+            <Name>add-cors</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>VAK-VerifyAPIKey</Name>
+            </Step>
+            <Step>
+                <Condition>request.verb != "OPTIONS"</Condition>
+                <Name>AM-RemoveHeaderAuthorization</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="addBoleta_Fundacional">
+            <!-- CDP-I-001 - Registro de Boleta. Origen: Controlador Tienda (POS, APPV). Destino: CDP. Metodo: PUSH -->
+            <Description>Registro de Boleta</Description>
+            <Request>
+                <Step>
+                    <Name>SC-SendITR</Name>
+                </Step>
+                <Step>
+                    <Name>RF-Errors</Name>
+                </Step>
+            </Request>
+            <Response>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/boletas") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="addPedido_Fundacional">
+            <!-- CDP-I-007 - Registro de Pedido de SOMS. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PUSH -->
+            <Description>Registro de Pedido de SOMS</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/pedidos") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updatePedido_Fundacional">
+            <!-- CDP-I-007 - Registro de Pedido de SOMS. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PUSH -->
+            <Description>Actualización de Pedido de SOMS</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/pedidos") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="addInventario_Fundacional">
+            <!-- CDP-I-008 - Registro de Inventario de SOMS. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PUSH -->
+            <Description>(DEPRECATED) Registro de Inventario de SOMS</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/inventarios") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="addClienteMDM_Fundacional">
+            <!-- CDP-I-009 , CDP-I-011 - Registro de cliente MDM. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PUSH -->
+            <Description>Registro de Cliente MDM</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/mdm") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updateClienteMDM_Fundacional">
+            <!-- CDP-I-009 -->
+            <Description>Actualizar Cliente MDM</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/mdm") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="addClienteATG_Fundacional">
+            <!-- CDP-I-010 - Registro de cliente ATG. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PUSH -->
+            <Description>(PENDING DEFINITION EQUIPO FUNCIONAL) Registro de Cliente ATG</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/atg") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updateClienteATG_Fundacional">
+            <!-- CDP-I-010 -->
+            <Description>Actualizar Cliente ATG</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/atg") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="addClienteSOMS_Fundacional">
+            <!-- CDP-I-012 - Registro de cliente SOMS. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PUSH -->
+            <Description>(DELETED) Registro de Cliente SOMS</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/soms") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="getClienteCDP_Fundacional">
+            <!-- CDP-C-012 - Consulta de cliente CDP. Origen: ATG (WWW, Pocket). Destino: CDP. Metodo: PULL -->
+            <Description>(PENDING DEFINITION WITH GOOGLE) Consulta de cliente CDP</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/cdp") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="OptionsPreFlight">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Condition>request.verb == "OPTIONS" AND request.header.origin != null AND request.header.Access-Control-Request-Method != null</Condition>
+                    <Name>add-cors</Name>
+                </Step>
+            </Response>
+        </Flow>
+        <Flow name="addClienteMDMAreaGris_Fundacional">
+            <!-- CDP-I-014 -->
+            <Description>Registro de Cliente MDM Area Gris</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/mdmAreaGris") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updateClienteMDMAreaGris_Fundacional">
+            <!-- CDP-I-014 -->
+            <Description>Actualizar Cliente MDM Area Gris</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/mdmAreaGris") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="Default">
+            <Description>Flujo Default para llamadas no autorizadas o no consideradas en los flujos anteriores</Description>
+            <Request>
+                <Step>
+                    <Name>RF-OperationNotFound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/cdp-pos/v2</BasePath>
+    </HTTPProxyConnection>
+    <RouteRule name="no_route">
+        <Condition>(request.verb = "OPTIONS")</Condition>
+    </RouteRule>
+    <!-- Se comento por haber agregado los Proxy Endpoint de cada una
+    <RouteRule name="instalaciones">
+        <Condition>(proxy.pathsuffix MatchesPath "/boletasServicio") or (proxy.pathsuffix MatchesPath "/boletasServicio/**") or (proxy.pathsuffix MatchesPath "/boletas")</Condition>
+        <TargetEndpoint>instalaciones</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="mis-compras">
+        <Condition>(proxy.pathsuffix MatchesPath "/compras/boletas")</Condition>
+        <TargetEndpoint>mis-compras</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="mis-compras">
+        <Condition>(proxy.pathsuffix MatchesPath "/pedidos") and (request.verb = "GET")</Condition>
+        <TargetEndpoint>mis-compras</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="ticket.electronico">
+        <TargetEndpoint>ticket.electronico</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath "/clientes")</Condition>
+    </RouteRule>
+    -->
+    <RouteRule name="default">
+        <TargetEndpoint>fundacional</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

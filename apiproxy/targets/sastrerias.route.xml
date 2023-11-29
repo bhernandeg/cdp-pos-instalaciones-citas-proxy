@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="sastrerias.route">
+    <Description/>
+    <FaultRules/>
+    <DefaultFaultRule>
+        <Step>
+            <Condition>request.header.origin != null</Condition>
+            <Name>add-cors</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response>
+            <Step>
+                <Name>add-cors</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response>
+            <!-- <Step>
+                <Name>AM-SetResponseBodyMock1</Name>
+                <Condition>(proxy.pathsuffix MatchesPath "/clientes/busqueda") and (request.verb = "GET")</Condition>
+            </Step>
+            <Step>
+                <Name>AM-SetResponseBodyMock2</Name>
+                <Condition>(proxy.pathsuffix MatchesPath "/clientes") and (request.verb = "POST")</Condition>
+            </Step>
+            <Step>
+                <Name>AM-SetResponseBodyMock3</Name>
+                <Condition>(proxy.pathsuffix MatchesPath "/clientes") and (request.verb = "PUT")
+                </Condition>
+            </Step> -->
+        </Response>
+    </PostFlow>
+    <Flows/>
+    <HTTPTargetConnection>
+        <Properties/>
+        <LoadBalancer>
+            <Server name="cdp-sastreria-target"/>
+        </LoadBalancer>
+        <Path>/alteraciones/v2</Path>
+    </HTTPTargetConnection>
+</TargetEndpoint>

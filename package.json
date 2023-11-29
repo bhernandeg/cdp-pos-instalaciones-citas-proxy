@@ -1,0 +1,15 @@
+{
+	"name": "cdp-pos-instalaciones-y-citas-proxy",
+	"description": "CDP POS instalaciones y citas API Proxy",
+	"version": "1.0.0",
+	"devDependencies": {
+		"newman": "^4.5.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"keywords": [],
+	"author": "",
+	"license": ""
+}

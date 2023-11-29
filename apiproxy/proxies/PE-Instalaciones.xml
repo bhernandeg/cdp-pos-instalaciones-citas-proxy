@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="PE-Instalaciones">
+    <Description/>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="getBoleta_Inst">
+            <!-- CDP-C-010 - Consulta de pedido. Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Consulta de Boleta</Description>
+            <Request>
+                <Step>
+                    <Name>EV-idBoletas</Name>
+                </Step>
+                <Step>
+                    <Name>RC-ResponseBoleta</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>RC-ResponseBoleta</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/boletas") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="addBoletaServicio_Inst">
+            <!-- CDP-I-006 - Registro de Boleta de servicio. Origen: ATG (WWW, Pocket).Destino: CDP. PUSH -->
+            <Description>Registro de Boleta de servicio</Description>
+            <Request>
+                <Step>
+                    <Name>Extract-Variables-2</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/boletasServicio") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="getBoletaServicio_Inst">
+            <!-- CDP-C-011 - Consulta de Boleta de servicio. Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Consulta de Boleta de servicio</Description>
+            <Request>
+                <Step>
+                    <Name>Extract-Variables-2</Name>
+                </Step>
+                <Step>
+                    <Name>RC-ResponseBoletaServicio</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>RC-ResponseBoletaServicio</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/boletasServicio/*") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/cdp-pos/instalaciones/v2</BasePath>
+        <Properties/>
+    </HTTPProxyConnection>
+    <RouteRule name="instalaciones">
+        <TargetEndpoint>instalaciones</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

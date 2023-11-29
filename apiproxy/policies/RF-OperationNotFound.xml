@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-OperationNotFound">
+    <DisplayName>RF-OperationNotFound</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">
+                {
+                    "StatusCode": "405",
+                    "ReasonPhrase": "Operación no permitida"
+                }
+            </Payload>
+            <StatusCode>405</StatusCode>
+            <ReasonPhrase>Operación no permitida</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

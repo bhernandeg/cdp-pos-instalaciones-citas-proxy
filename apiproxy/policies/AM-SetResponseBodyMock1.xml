@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-SetResponseBodyMock1">
+    <DisplayName>AM-SetResponseBodyMock1</DisplayName>
+    <Set>
+        <Payload contentType="application/json">
+        [
+          {
+            "id_cliente": 9760669,
+            "primer_nombre": "Edgar",
+            "segundo_nombre": "Mauricio",
+            "apellido_paterno": "Rivera",
+            "apellido_materno": "Velazquez",
+            "correo_electronico": "emrivera@grupoasesores.com.mx",
+            "numero_celular": "5590003959",
+            "genero": "Masculino",
+            "fecha_nacimiento": "16/08/1974"
+          }
+        ]            
+        </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

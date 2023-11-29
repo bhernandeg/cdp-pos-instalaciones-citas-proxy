@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-DontCopyPathSuffix">
+    <DisplayName>AM-DontCopyPathSuffix</DisplayName>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+    <!--<AssignVariable>
+        <Name>target.url</Name>
+        <Value>http://172.18.168.22:8080/cdp/v1/boleta</Value>
+    </AssignVariable>-->
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="mis-compras">
+    <Description/>
+    <FaultRules/>
+    <DefaultFaultRule>
+        <Step>
+            <Condition>request.header.origin != null</Condition>
+            <Name>add-cors</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response>
+            <Step>
+                <Name>add-cors</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="getBoletasStandard_MisCompras">
+            <!-- CDP-C-003 - Consulta de boleta (Standard). La consulta devolverá las boletas de venta de los últimos 6 meses. Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Consulta de boleta (Standard)</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-GetMisComprasTarget</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetTargetMisCompras</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/compras/boletas/*") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="getOrden_MisCompras">
+            <Description/>
+            <Request>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/boletas/ordenSoms") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="getBoletasFiltros_MisCompras">
+            <!-- CDP-C-004 - Consulta de boleta (Filtros). Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Consulta de boleta (filtros)</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-GetMisComprasTarget</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetTargetMisCompras</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/compras/boletas") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="getBoleta_MisCompras">
+            <!-- CDP-C-005, CDP-C-006, CDP-C-007, CDP-C-008 - Consulta de Boleta (Detalle, o Cancelación, o Cancelación - Ejecución, Reembolso). Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Consulta de Boleta</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-GetMisComprasTarget</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetTargetMisCompras</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/compras/boletas") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="updateBoleta_MisCompras">
+            <!-- CDP-I-004, CDP-I-005 - Relación manual de Boleta - Cliente, y Registro de cancelación. Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Relación manual de Boleta - Cliente / Registro cancelación</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-GetMisComprasTarget</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetTargetMisCompras</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/compras/boletas") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="getPedidos_MisCompras">
+            <!-- CDP-C-009 - Consulta de pedidos. Origen: ATG (WWW, Pocket). Destino: CDP. PULL -->
+            <Description>Consulta de pedidos</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-GetMisComprasTarget</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetTargetMisCompras</Name>
+                </Step>
+            </Request>
+            <Response>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/compras/pedidos") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <HTTPTargetConnection>
+        <!-- <URL>https://liverpool.cdp/v1</URL>-->
+        <LoadBalancer>
+            <Server name="cdp-target"/>
+        </LoadBalancer>
+        <Path>/compras/v2</Path>
+    </HTTPTargetConnection>
+</TargetEndpoint>

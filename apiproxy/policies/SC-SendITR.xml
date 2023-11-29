@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="true" enabled="true" name="SC-SendITR">
+    <Request clearPayload="false" variable="request">
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+            </Headers>
+            <Verb>POST</Verb>
+            <Path>/itrhana/v1/sku</Path>
+        </Set>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <URL>https://microservicios-qa.liverpool.com.mx</URL>
+        <Properties/>
+    </HTTPTargetConnection>
+</ServiceCallout>

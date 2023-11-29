@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponseCache async="false" continueOnError="false" enabled="true" name="RC-numOrdenSoms">
+    <DisplayName>RC-numOrdenSoms</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <Prefix>CDP</Prefix>
+        <KeyFragment ref="qp_codigoFacturacion" type="string"/>
+    </CacheKey>
+    <Scope>Exclusive</Scope>
+    <ExpirySettings>
+        <TimeoutInSec>300</TimeoutInSec>
+    </ExpirySettings>
+    <CacheLookupTimeoutInSeconds>5</CacheLookupTimeoutInSeconds>
+    <!--tiempo máximo que puede tardar la cache en cargarse-->
+    <CacheResource>CDP_Boletas</CacheResource>
+</ResponseCache>

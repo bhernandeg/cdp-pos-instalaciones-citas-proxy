@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="PE-Sastrerias">
+    <Description>Servicio Generacion de la orden de compostura en el POS</Description>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>VAK-VerifyAPIKey</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="addCliente_Sastreria">
+            <Description>Crear nuevo cliente</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/sastreria") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updateCliente_Sastreria">
+            <Description>Actualizar datos del cliente</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/sastreria") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="getClientesBusqueda_Sastreria">
+            <Description>Busqueda de clientes</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/sastreria") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/cdp-pos/sastrerias/v2</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>sastrerias.route</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

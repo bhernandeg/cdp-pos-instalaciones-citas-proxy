@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="38" name="cdp-pos-instalaciones-y-citas-proxy">
+<DisplayName>Liverpool-CDP-Instalaciones-y-Citas-API</DisplayName>
+<Description>Proxy que envuelve todo Liverpool CDP para consumidores que utilice oauth.</Description>
+<CreatedAt>1688046969350</CreatedAt>
+<LastModifiedAt>1688046969350</LastModifiedAt>
+<BasePaths>/cdp-pos/v2</BasePaths>
+<BasePaths>/cdp-pos/instalaciones/v2</BasePaths>
+<BasePaths>/cdp-pos/compras/v2</BasePaths>
+<BasePaths>/cdp-pos/ticket/v2</BasePaths>
+<BasePaths>/cdp-pos/sastrerias/v2</BasePaths>
+<Policies>
+    <Policy>AM-SetCORSHeader</Policy>
+    <Policy>AM-RemoveHeaderAuthorization</Policy>
+    <Policy>Extract-Variables-2</Policy>
+    <Policy>EV-idAtg</Policy>
+    <Policy>RS-ErrorLongitud</Policy>
+    <Policy>JS-ValidaInput</Policy>
+    <Policy>RF-OperationNotFound</Policy>
+    <Policy>KVM-GetFundacionalTarget</Policy>
+    <Policy>JS-SetTargetClientesCDP</Policy>
+    <Policy>add-cors</Policy>
+    <Policy>RC-ResponseBoleta</Policy>
+    <Policy>RF-PreFlightCORS</Policy>
+    <Policy>JS-SetTargetMisCompras</Policy>
+    <Policy>EV-numOrdenSoms</Policy>
+    <Policy>KVM-GetMisComprasTarget</Policy>
+    <Policy>RC-idAtg</Policy>
+    <Policy>OA-VerifyOAuthv2.0AccessToken</Policy>
+    <Policy>AM-DontCopyPathSuffix</Policy>
+    <Policy>JS-SetTargetBoletaTlog</Policy>
+    <Policy>EV-idBoletas</Policy>
+    <Policy>RC-numOrdenSoms</Policy>
+    <Policy>AM-DummyBoleta</Policy>
+    <Policy>RC-ResponseBoletaServicio</Policy>
+    <Policy>VAK-VerifyAPIKey</Policy>
+    <Policy>AM-SetResponseBodyMock1</Policy>
+    <Policy>AM-SetResponseBodyMock2</Policy>
+    <Policy>AM-SetResponseBodyMock3</Policy>
+    <Policy>SC-SendITR</Policy>
+    <Policy>RF-Errors</Policy>
+</Policies>
+<ProxyEndpoints>
+    <ProxyEndpoint>PE-Instalaciones</ProxyEndpoint>
+    <ProxyEndpoint>PE-MisCompras</ProxyEndpoint>
+    <ProxyEndpoint>PE-Sastrerias</ProxyEndpoint>
+    <ProxyEndpoint>PE-Tickets</ProxyEndpoint>
+    <ProxyEndpoint>default</ProxyEndpoint>
+</ProxyEndpoints>
+<Resources>
+    <Resource>jsc://SetTargetClientesCDP.js</Resource>
+    <Resource>jsc://ValidaInput.js</Resource>
+    <Resource>jsc://SetTargetBoletaTlog.js</Resource>
+    <Resource>jsc://SetTargetMisCompras.js</Resource>
+</Resources>
+<TargetEndpoints>
+    <TargetEndpoint>fundacional</TargetEndpoint>
+    <TargetEndpoint>instalaciones</TargetEndpoint>
+    <TargetEndpoint>mis-compras</TargetEndpoint>
+    <TargetEndpoint>sastrerias.route</TargetEndpoint>
+    <TargetEndpoint>ticket.electronico</TargetEndpoint>
+</TargetEndpoints>
+</APIProxy>

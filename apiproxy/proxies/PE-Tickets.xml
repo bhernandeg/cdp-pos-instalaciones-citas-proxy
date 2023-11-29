@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="PE-Tickets">
+    <Description/>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="addCliente_Ticket">
+            <!-- CDP-I-002 - Registro del cliente. Origen: Controlador Tienda(POS, APPV). Destino: CDP. Metodo: PUSH  -->
+            <Description>Registro del cliente en ticket electrónico</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updateCliente_Ticket">
+            <!-- CDP-I-003 - Actualización de preferencias del cliente. Origen: Controlador Tienda(POS, APPV). Destino: CDP. Metodo: PUT -->
+            <Description>Actualización de preferencias del cliente en ticket electrónico</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="getClienteByFormaPago_Ticket">
+            <!-- DP-C-001- Consulta de datos del cliente (Forma de Pago). Origen: Controlador Tienda(POS, APPV). Destino: CDP. Metodo: PULL -->
+            <Description>Consulta de cliente por forma de pago</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/formapago") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="getClienteByMedioContacto_Ticket">
+            <!-- CDP-C-002 - Consulta de datos del cliente. Origen: Controlador Tienda(POS, APPV). Destino: CDP. Metodo: PULL -->
+            <Description>Consulta cliente por medio contacto</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/clientes/mediocontacto") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/cdp-pos/ticket/v2</BasePath>
+        <Properties/>
+    </HTTPProxyConnection>
+    <RouteRule name="ticket.electronico">
+        <TargetEndpoint>ticket.electronico</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-DummyBoleta">
+    <DisplayName>AM-DummyBoleta</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">{
+  "SKU": "1234",
+  "id_sku": "{qp_idSku}",
+  "descripcion_sku": "string",
+  "bandera_marketplace": true,
+  "bandera_sku_tipo_regalo": true,
+  "cantidad": 0,
+  "garantia": "string",
+  "numero_pedido": 0,
+  "fecha_compra": "2021-02-16T16:17:26.663Z",
+  "numero_boleta": 0,
+  "terminal": "string",
+  "tienda_original": "string"
+  "codigo_facturacion": "{qp_codigoFacturacion}",
+  "ticket_servicio_siebel": "string",
+  "nombre_destinatario": "string",
+  "apellido_paterno_destinatario": "string",
+  "apellido_materno_destinatario": "string",
+  "correo_electronico_destinatario": "string",
+  "pais": "string",
+  "codigo_postal": "string",
+  "estado": "string",
+  "ciudad": "string",
+  "municipio_o_delegacion": "string",
+  "colonia": "string",
+  "calle": "string",
+  "numnero_exterior": 0,
+  "numero_interior": 0,
+  "edificio": "string",
+  "entre_calle": "string",
+  "y_calle": "string",
+  "telefono_casa": "string",
+  "telefono_oficina": "string",
+  "telefono_asociado_a_entrega": "string",
+  "status_por_linea_soms": "string"
+}
+</Payload>
+        <!-- <Verb>GET</Verb> -->
+        <Path/>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>
