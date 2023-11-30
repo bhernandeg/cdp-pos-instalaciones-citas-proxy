@@ -51,11 +51,10 @@
             <apigee.profile>dev</apigee.profile>
             <apigee.env>${env}</apigee.env>
             <apigee.hosturl>${hosturl}</apigee.hosturl>
-            <apigee.apiversion>platform</apigee.apiversion>
             <apigee.org>${org}</apigee.org>
             <apigee.username>${username}</apigee.username>
             <apigee.password>${password}</apigee.password>
-            <apigee.options>update</apigee.options>
+            <apigee.options>override</apigee.options>
             <apigee.tokenurl>${tokenurl}</apigee.tokenurl> <!-- optional: oauth -->
             <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
             <apigee.authtype>${authtype}</apigee.authtype> <!-- optional: oauth|basic(default) -->
@@ -102,7 +101,7 @@
          <plugin>
             <groupId>io.apigee.build-tools.enterprise4g</groupId>
             <artifactId>apigee-edge-maven-plugin</artifactId>
-            <version>1.2.3</version>
+            <version>2.4.0</version>
             <executions>
                <execution>
                   <id>configure-bundle</id>
