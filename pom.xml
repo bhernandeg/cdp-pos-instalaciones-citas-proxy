@@ -51,7 +51,7 @@
             <apigee.profile>dev</apigee.profile>
             <apigee.env>${env}</apigee.env>
             <apigee.hosturl>${apigee_url}</apigee.hosturl>
-            <apigee.apiversion>v2</apigee.apiversion>
+            <apigee.apiversion>platform</apigee.apiversion>
             <apigee.org>${org}</apigee.org>
             <apigee.username>${username}</apigee.username>
             <apigee.password>${password}</apigee.password>
