@@ -50,7 +50,7 @@
          <properties>
             <apigee.profile>dev</apigee.profile>
             <apigee.env>${env}</apigee.env>
-            <apigee.hosturl>${apigee_url}</apigee.hosturl>
+            <apigee.hosturl>${hosturl}</apigee.hosturl>
             <apigee.apiversion>platform</apigee.apiversion>
             <apigee.org>${org}</apigee.org>
             <apigee.username>${username}</apigee.username>
