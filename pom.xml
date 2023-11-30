@@ -200,20 +200,6 @@
                      </commandlineArgs>
                   </configuration>
                </execution>
-               <!-- npm install -->
-               <execution>
-                  <id>mocha-install</id>
-                  <phase>validate</phase>
-                  <goals>
-                     <goal>exec</goal>
-                  </goals>
-                  <configuration>
-                     <executable>npm</executable>
-                     <commandlineArgs>
-                        install -g mocha
-                     </commandlineArgs>
-                  </configuration>
-               </execution>
                <!-- run unit tests -->
                <execution>
                   <id>unit</id>
