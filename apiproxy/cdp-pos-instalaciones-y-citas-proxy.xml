@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <APIProxy revision="38" name="cdp-pos-instalaciones-y-citas-proxy">
-<DisplayName>Liverpool-CDP-Instalaciones-y-Citas-API</DisplayName>
-<Description>Proxy que envuelve todo Liverpool CDP para consumidores que utilice oauth.</Description>
-<CreatedAt>1688046969350</CreatedAt>
-<LastModifiedAt>1688046969350</LastModifiedAt>
-<BasePaths>/cdp-pos/v2</BasePaths>
-<BasePaths>/cdp-pos/instalaciones/v2</BasePaths>
-<BasePaths>/cdp-pos/compras/v2</BasePaths>
-<BasePaths>/cdp-pos/ticket/v2</BasePaths>
-<BasePaths>/cdp-pos/sastrerias/v2</BasePaths>
+    <BasePaths>/cdp-pos/v2</BasePaths>
+    <BasePaths>/cdp-pos/instalaciones/v2</BasePaths>
+    <BasePaths>/cdp-pos/compras/v2</BasePaths>
+    <BasePaths>/cdp-pos/ticket/v2</BasePaths>
+    <BasePaths>/cdp-pos/sastrerias/v2</BasePaths>
+    <ConfigurationVersion majorVersion="38" minorVersion="0"/>
+    <CreatedAt>1688046969350</CreatedAt>
+    <CreatedBy>bhernandeg01</CreatedBy>
+    <Description>Proxy que envuelve todo Liverpool CDP para consumidores que utilice oauth</Description>
+    <DisplayName>Liverpool-CDP-Instalaciones-y-Citas-API</DisplayName>
+    <LastModifiedAt>1688046969350</LastModifiedAt>
+    <LastModifiedBy>bhernandeg01</LastModifiedBy>
 <Policies>
     <Policy>AM-SetCORSHeader</Policy>
     <Policy>AM-RemoveHeaderAuthorization</Policy>
