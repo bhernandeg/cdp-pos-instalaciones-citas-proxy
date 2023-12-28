@@ -48,25 +48,18 @@
       <profile>
          <id>dev</id>
          <properties>
-            <apigee.profile>dev</apigee.profile>
-            <apigee.env>${env}</apigee.env>
-            <apigee.hosturl>${hosturl}</apigee.hosturl>
-            <apigee.apiversion>${apiversion}</apigee.apiversion>
-            <apigee.org>${org}</apigee.org>
-            <apigee.username>${username}</apigee.username>
-            <apigee.password>${password}</apigee.password>
-            <apigee.options>override</apigee.options>
-            <apigee.tokenurl>${tokenurl}</apigee.tokenurl> <!-- optional: oauth -->
-            <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
-            <apigee.authtype>${authtype}</apigee.authtype> <!-- optional: oauth|basic(default) -->
-            <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
-            <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email>
-            <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
-            <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
-            <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
-            <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
-            <!--apigee.override.delay>10</apigee.override.delay-->
-            <!--apigee.delay>1000</apigee.delay-->
+            <properties>
+               <apigee.profile>test</apigee.profile>
+               <apigee.hosturl>${hosturl}</apigee.hosturl>
+               <apigee.apiversion>${apiversion}</apigee.apiversion>
+               <apigee.org>${org}</apigee.org>
+               <apigee.env>${env}</apigee.env>
+               <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
+               <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->
+               <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
+               <apigee.options>override</apigee.options> <!-- override is default. Other options are async|clean-->
+               <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email> <!-- Available in Apigee X and Apigee hybrid 1.6 + -->
+            </properties>
          </properties>
       </profile>
    </profiles>
