@@ -48,7 +48,6 @@
       <profile>
          <id>dev</id>
          <properties>
-            <properties>
                <apigee.profile>test</apigee.profile>
                <apigee.hosturl>${hosturl}</apigee.hosturl>
                <apigee.apiversion>${apiversion}</apigee.apiversion>
@@ -59,7 +58,6 @@
                <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
                <apigee.options>override</apigee.options> <!-- override is default. Other options are async|clean-->
                <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email> <!-- Available in Apigee X and Apigee hybrid 1.6 + -->
-            </properties>
          </properties>
       </profile>
    </profiles>
