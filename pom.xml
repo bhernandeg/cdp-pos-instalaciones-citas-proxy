@@ -59,6 +59,8 @@
             <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
             <apigee.authtype>${authtype}</apigee.authtype> <!-- optional: oauth|basic(default) -->
             <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
+            <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email>
+            <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
             <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
             <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
             <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
