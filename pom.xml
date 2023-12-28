@@ -55,7 +55,7 @@
             <apigee.username>${username}</apigee.username>
             <apigee.password>${password}</apigee.password>
             <apigee.options>override</apigee.options>
-            <apigee.tokenurl>${token}</apigee.tokenurl> <!-- optional: oauth -->
+            <apigee.tokenurl>${tokenurl}</apigee.tokenurl> <!-- optional: oauth -->
             <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
             <apigee.authtype>${authtype}</apigee.authtype> <!-- optional: oauth|basic(default) -->
             <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
