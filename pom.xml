@@ -48,7 +48,7 @@
       <profile>
          <id>dev</id>
          <properties>
-               <apigee.profile>test</apigee.profile>
+               <apigee.profile>dev</apigee.profile>
                <apigee.hosturl>${hosturl}</apigee.hosturl>
                <apigee.apiversion>${apiversion}</apigee.apiversion>
                <apigee.org>${org}</apigee.org>
@@ -95,7 +95,7 @@
          <plugin>
             <groupId>io.apigee.build-tools.enterprise4g</groupId>
             <artifactId>apigee-edge-maven-plugin</artifactId>
-            <version>1.2.3</version>
+            <version>2.4.0</version>
             <executions>
                <execution>
                   <id>configure-bundle</id>
