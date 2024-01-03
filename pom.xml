@@ -51,12 +51,9 @@
                <apigee.profile>test</apigee.profile>
                <apigee.hosturl>${hosturl}</apigee.hosturl>
                <apigee.apiversion>${apiversion}</apigee.apiversion>
-                <apigee.username>${username}</apigee.username>
                <apigee.org>${org}</apigee.org>
                <apigee.env>${env}</apigee.env>
-               <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
                <apigee.authtype>${authtype}</apigee.authtype> <!-- optional: oauth|basic(default) -->
-               <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
                <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->
                <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
                <apigee.options>${options}</apigee.options> <!-- override is default. Other options are async|clean-->
